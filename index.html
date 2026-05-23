@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopSphere | Premium Store</title>
+    <!-- CSS File ko link kiya -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. header section -->
+    
+<header class="navbar">
+        <div class="logo">JAMSHAID</div>
+        
+        <div class="search-box">
+            <input type="text" id="searchBar" placeholder="Search clothes, makeup...">
+        </div>
+
+        <div class="hamburger" id="hamburgerMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="nav-links" id="navLinksMenu">
+            <li class="close-menu" id="closeMenuBtn">&times;</li>
+            <li><a href="#" class="category-btn active" id="all-btn">All Products</a></li>
+            <li><a href="#" class="category-btn" id="men-btn">Men</a></li>
+            <li><a href="#" class="category-btn" id="women-btn">Women</a></li>
+            <li><a href="#" class="category-btn" id="makeup-btn">Makeup</a></li>
+            <li><button id="themeToggle" class="theme-btn">🌙 Dark Mode</button></li>
+        </ul>
+    </header>
+
+
+    <!-- 2. HERO IMAGE SECTION -->
+
+<section class="hero-carousel">
+        <div class="carousel-slide active">
+            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200" alt="Men's Collection" class="carousel-img">
+            <div class="carousel-caption">
+                <h1>Men's Premium Wear</h1>
+                <p>Upgrade your wardrobe with timeless classics.</p>
+                <button class="btn-shop-now" onclick="scrollToProducts()">Shop Collection</button>
+            </div>
+        </div>
+
+        <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200" alt="Women's Collection" class="carousel-img">
+            <div class="carousel-caption">
+                <h1>Elegant Women's Style</h1>
+                <p>Discover beautiful dresses and ethnic sarees.</p>
+                <button class="btn-shop-now" onclick="scrollToProducts()">Explore Now</button>
+            </div>
+        </div>
+
+        <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1200" alt="Makeup Products" class="carousel-img">
+            <div class="carousel-caption">
+                <h1>Glamorous Makeup Range</h1>
+                <p>Get that perfect glow with premium beauty items.</p>
+                <button class="btn-shop-now" onclick="scrollToProducts()">Buy Beauty</button>
+            </div>
+        </div>
+
+        <div class="carousel-dots">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+    </section>
+
+    <!-- 2. MAIN PRODUCT SECTION -->
+    <main class="container">
+        <h1 class="section-title">Trending Products</h1>
+        
+        <!-- Yahan hamare saare products cards JS ke through automatic standard format me aayenge -->
+        <div class="product-grid" id="productGrid"></div>
+    </main>
+
+    <!-- 3. POPUP MODAL FORM (By default hidden rahega) -->
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal-box">
+            <h2>Confirm Your Order</h2>
+            <p>Please provide your shipping details.</p>
+            
+            <form id="checkoutForm">
+                <!-- Hidden product name store karne ke liye -->
+                <input type="hidden" id="formProductName">
+
+                <div class="form-group">
+                    <label>Product Name</label>
+                    <input type="text" id="displayProductName" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" id="custName" required placeholder="Enter full name">
+                </div>
+                <div class="form-group">
+                    <label>Mobile Number</label>
+                    <input type="tel" id="custPhone" required placeholder="10-digit mobile number">
+                </div>
+                <div class="form-group">
+                    <label>Complete Address</label>
+                    <textarea id="custAddress" required placeholder="Flat, Street, Area..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>City</label>
+                    <input type="text" id="custCity" required placeholder="e.g. Mumbai">
+                    <label>Pin Code</label>
+                    <input type="text" id="custPin" required placeholder="6-digit pin code">
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="modal-actions">
+                    <button type="button" class="btn-close" id="closeModalBtn">Cancel</button>
+                    <button type="submit" class="btn-submit">Submit Order</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+<!-- counter section-->
+
+<section class="stats-counter">
+        <div class="stats-container">
+            <div class="stat-box">
+                <span class="stat-number">15K+</span>
+                <span class="stat-label">Happy Customers</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">25K+</span>
+                <span class="stat-label">Orders Delivered</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Premium Brands</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">4.9★</span>
+                <span class="stat-label">Customer Rating</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Jamshaid</h3>
+                <p>Your one-stop destination for premium clothes and glamorous makeup. We deliver style at your doorstep.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#" onclick="scrollToProducts()">Shop Now</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="https://facebook.com" target="_blank" class="social-btn fb">Facebook</a>
+                    <a href="https://instagram.com" target="_blank" class="social-btn insta">Instagram</a>
+                    <a href="https://wa.me/919876543210" target="_blank" class="social-btn whatsapp">WhatsApp Chat</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Jamshaid. All Rights Reserved | Designed with ❤️</p>
+        </div>
+    </footer>
+
+
+    <!-- JavaScript File ko link kiya -->
+    <script src="script.js"></script>
+</body>
+</html>
