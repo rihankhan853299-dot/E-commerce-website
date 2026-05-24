@@ -4,13 +4,13 @@
 :root {
     --bg-color: #fcfcfd;
     --text-color: #0f172a;
-    --navbar-bg: rgba(255, 255, 255, 0.85); 
+    --navbar-bg: rgba(255, 255, 255, 0.85); /* Transparent Glass Effect */
     --card-bg: #ffffff;
-    --primary-color: #1e1e1e; 
-    --accent-color: #db2777;  
+    --primary-color: #1e1e1e; /* Luxury Matte Black theme */
+    --accent-color: #db2777;  /* High-end Pink/Rose for makeup/tags */
     --border-color: #e2e8f0;
     --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
-    --btn-radius: 4px; 
+    --btn-radius: 4px; /* Sharp professional look */
 }
 
 [data-theme="dark"] {
@@ -32,7 +32,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    /* CRITICAL FIX: Global * se transition hata diya taaki loading bug na aaye */
+    /* FIX 1: Yahan se global transition hata diya, taaki load par menu glitch na kare */
 }
 
 body {
@@ -48,7 +48,7 @@ body {
 }
 
 /* ==========================================================================
-   3. LUXURY NAVBAR 
+   3. LUXURY NAVBAR (With Glassmorphism & Fixed Blur)
    ========================================================================== */
 .navbar {
     display: flex;
@@ -57,11 +57,10 @@ body {
     padding: 1.2rem 3rem;
     background-color: var(--navbar-bg);
     border-bottom: 1px solid var(--border-color);
-    backdrop-filter: blur(12px); 
+    backdrop-filter: blur(12px); /* Modern blur backdrop */
     position: sticky;
     top: 0;
     z-index: 100;
-    transition: background-color 0.3s ease;
 }
 
 .logo {
@@ -86,7 +85,7 @@ body {
     color: var(--text-color);
     outline: none;
     font-size: 0.9rem;
-    transition: all 0.2s ease;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .search-box input:focus {
@@ -111,6 +110,7 @@ body {
     padding: 0.3rem 0;
 }
 
+/* Clean Underline Animation on Hover */
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -137,7 +137,7 @@ body {
     font-weight: 500;
     border-radius: var(--btn-radius);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .theme-btn:hover {
@@ -146,11 +146,11 @@ body {
 }
 
 .hamburger {
-    display: none; /* Desktop pe hidden */
+    display: none;
 }
 
 /* ==========================================================================
-   4. HERO CAROUSEL
+   4. HERO CAROUSEL (Minimalist Layout)
    ========================================================================== */
 .hero-carousel {
     position: relative;
@@ -167,7 +167,7 @@ body {
     height: 100%;
     opacity: 0;
     z-index: 1;
-    transition: opacity 0.6s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
 }
 
 .carousel-slide.active {
@@ -229,7 +229,7 @@ body {
     letter-spacing: 1px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background-color 0.25s ease, transform 0.25s ease;
 }
 
 .btn-shop-now:hover {
@@ -253,7 +253,7 @@ body {
     background-color: rgba(255, 255, 255, 0.4);
     border-radius: 50%;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background-color 0.25s ease, transform 0.25s ease;
 }
 
 .dot.active {
@@ -262,7 +262,7 @@ body {
 }
 
 /* ==========================================================================
-   5. PRODUCT GRID & CARDS
+   5. PRODUCT GRID & HIGH-END CARDS
    ========================================================================== */
 .section-title {
     font-size: 1.8rem;
@@ -288,7 +288,7 @@ body {
     flex-direction: column;
     position: relative;
     box-shadow: var(--shadow);
-    transition: all 0.3s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .product-card:hover {
@@ -358,7 +358,7 @@ body {
     font-size: 0.85rem;
     border-radius: var(--btn-radius);
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.25s ease;
 }
 
 .btn-buy:hover {
@@ -462,244 +462,3 @@ body {
 }
 
 .social-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-}
-
-.social-btn {
-    text-decoration: none;
-    color: #94a3b8;
-    font-size: 0.95rem;
-}
-
-.social-btn:hover {
-    color: white;
-}
-
-.footer-bottom {
-    text-align: center;
-    padding: 2rem;
-    border-top: 1px solid #1e293b;
-    font-size: 0.85rem;
-}
-
-/* ==========================================================================
-   8. CHECKOUT MODAL POPUP
-   ========================================================================== */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(8px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    z-index: 1000;
-    transition: opacity 0.3s ease;
-}
-
-.modal-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.modal-box {
-    background-color: var(--card-bg);
-    padding: 2.5rem; 
-    border-radius: var(--btn-radius);
-    width: 90%; 
-    max-width: 500px; 
-    border: 1px solid var(--border-color);
-    box-shadow: 0 30px 60px -15px rgba(0,0,0,0.3);
-    transform: translateY(20px);
-    transition: transform 0.3s ease;
-}
-
-.modal-overlay.active .modal-box {
-    transform: translateY(0);
-}
-
-.modal-box h2 {
-    font-size: 1.6rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 1.5rem;
-}
-
-.form-row {
-    display: flex;
-    gap: 1rem; 
-}
-
-.form-row .form-group {
-    flex: 1; 
-}
-
-.form-group {
-    margin-bottom: 1.2rem;
-}
-
-.form-group label {
-    display: block;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.form-group input, .form-group textarea {
-    width: 100%;
-    padding: 0.8rem;
-    border-radius: var(--btn-radius);
-    border: 1px solid var(--border-color);
-    background-color: transparent;
-    color: var(--text-color);
-    outline: none;
-    font-size: 0.95rem;
-}
-
-.form-group input:focus, .form-group textarea:focus {
-    border-color: var(--text-color);
-}
-
-.modal-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.btn-close {
-    padding: 0.8rem 1.5rem;
-    background: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--text-color);
-    border-radius: var(--btn-radius);
-    cursor: pointer;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-}
-
-.btn-submit {
-    padding: 0.8rem 1.5rem;
-    background: #000;
-    color: white;
-    border: none;
-    border-radius: var(--btn-radius);
-    cursor: pointer;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    transition: background-color 0.2s ease;
-}
-
-.btn-submit:hover {
-    background: var(--accent-color);
-}
-
-/* ==========================================================================
-   9. MOBILE HAMBURGER MENU & RESPONSIVENESS (FIXED & OPTIMIZED)
-   ========================================================================== */
-@media (max-width: 768px) {
-    .navbar {
-        padding: 1rem 1.5rem;
-    }
-
-    .logo {
-        font-size: 1.2rem;
-    }
-
-    .search-box {
-        width: 160px; /* FIXED: Mobile me elements overlap nahi honge */
-    }
-
-    .search-box input {
-        padding: 0.5rem 0.8rem;
-        font-size: 0.8rem;
-    }
-
-    .hamburger {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        cursor: pointer;
-        z-index: 1001;
-    }
-
-    .hamburger span {
-        width: 22px;
-        height: 2px;
-        background-color: var(--text-color);
-    }
-
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 280px;
-        height: 100vh;
-        background-color: var(--card-bg);
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        padding: 6rem 2rem;
-        gap: 2rem;
-        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-        transform: translateX(100%); /* Default hidden */
-        z-index: 1005; /* Content ke upar float karega */
-        transition: transform 0.3s ease-in-out; /* FIXED: Smoothly slide hoga bina glitch ke */
-    }
-
-    .nav-links.active {
-        transform: translateX(0);
-    }
-
-    .close-menu {
-        display: block !important;
-        position: absolute;
-        top: 1.5rem;
-        right: 1.5rem;
-        font-size: 2rem;
-        cursor: pointer;
-        color: var(--text-color);
-    }
-
-    .hero-carousel {
-        height: 400px;
-    }
-
-    .carousel-caption h1 {
-        font-size: 2.2rem;
-    }
-
-    .product-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-    }
-
-    .product-img {
-        height: 340px;
-    }
-
-    .stats-container {
-        flex-direction: column;
-        gap: 3rem;
-    }
-
-    .footer-container {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-}
-
-.close-menu {
-    display: none;
-}
